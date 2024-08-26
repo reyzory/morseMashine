@@ -79,29 +79,33 @@ string encryptFromMorse(const string& code) { // Метод для расшиф�
 
 
 int main() {
-    cout << "Choose to morse or unmorse (1/2): ";
-    string choose;
-    cin >> choose;
-    cin.ignore(); // Игнорировать оставшийся символ новой строки
+    while (true) {
+        cout << "Choose to morse or unmorse (1/2): ";
+        string choose;
+        cin >> choose;
+        cin.ignore(); // Игнорировать оставшийся символ новой строки
 
-    if (choose == "1") {
-        string text;
-        cout << "Enter text for morse coding: ";
-        getline(cin, text);
+        if (choose == "1") {
+            string text;
+            cout << "Enter text for morse coding: ";
+            getline(cin, text);
 
-        string morseText = encryptToMorse(text);
+            string morseText = encryptToMorse(text);
 
-        cout << "Morse code: " << morseText << endl;
+            cout << "Morse code: " << morseText << endl;
+        }
+        else if (choose == "2") {
+            string code;
+            cout << "Enter code for morse decoding: ";
+            getline(cin, code);
+
+            string morseText = encryptFromMorse(code);
+
+            cout << "Text: " << morseText << endl;
+        }
+
+        cout << "Press Enter to continue..." << endl;
+        cin.get();
     }
-    else if (choose == "2") {
-        string code;
-        cout << "Enter code for morse decoding: ";
-        getline(cin, code);
-
-        string morseText = encryptFromMorse(code);
-
-        cout << "Text: " << morseText << endl;
-    }
-
     return 0;
 }
